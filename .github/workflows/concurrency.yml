@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 concurrency: 
-  #group: tests-on-pr-${{ github.head_ref }}
-  group: build-and-test
+  group: tests-on-pr-${{ github.head_ref }}
+  #group: build-and-test
   cancel-in-progress: true
 
 jobs:
@@ -15,6 +15,8 @@ jobs:
     name: Build and Test On Pull Request
     runs-on: ubuntu-latest
     steps:
+      - name: Output HeadRef
+        run: echo "${{ github.head_ref }}"
       - name: Build The Code
         run: |
           echo "Starting Code Build"
