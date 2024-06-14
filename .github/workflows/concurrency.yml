@@ -22,8 +22,8 @@ jobs:
         run: echo "${{ github.head_ref }}"
 
       - name: Dump Github context
-        env:
-        |  GITHUB_CONTEXT: ${{ toJson(github) }}
+        env:  |
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
         
       - name: Build The Code
