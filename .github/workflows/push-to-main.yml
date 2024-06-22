@@ -1,8 +1,9 @@
 name: Push To Main
 
 on: 
-  pull_request:
-    branches: [main]
+  push:
+    branches:
+    - main
 
 #concurrency: 
   #group: tests-on-pr-${{ github.head_ref }}
