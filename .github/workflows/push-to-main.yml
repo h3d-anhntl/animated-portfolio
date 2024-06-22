@@ -12,21 +12,29 @@ on:
 
 jobs:
   # This workflow contains a single job called "build"
-  build-and-deploy:
+  build:
     name: Build and Deploy
     
     runs-on: ubuntu-latest
     
-    steps:
-        
+    steps: 
       - name: Build The Code
         run: |
           echo "Starting Code Build"
           sleep 2m
           echo "Finish Code build"
-          
-      # Deploy
-      - name: Deploy The code
+
+  deploy:
+    # Deploy
+    name: Deploy
+    needs:
+    - build
+    concurrency:
+      group: my-deploy
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy The Code
         run: |
           echo "Starting Code Deploy"
           sleep 2m
